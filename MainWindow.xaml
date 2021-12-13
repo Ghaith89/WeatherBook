@@ -1,0 +1,76 @@
+﻿<Window x:Class="WeatherBook.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WeatherBook"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="800" Width="450" HorizontalAlignment="Left" VerticalAlignment="Top" Closing="Window_Closing_1">
+    <Grid Margin="0,0,0,-6" HorizontalAlignment="Center" Width="450">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="14"/>
+            <RowDefinition Height="76"/>
+            <RowDefinition Height="44"/>
+            <RowDefinition Height="44"/>
+            <RowDefinition Height="44"/>
+            <RowDefinition Height="44"/>
+            <RowDefinition Height="322"/>
+            <RowDefinition Height="56"/>
+            <RowDefinition Height="80"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="115*"/>
+            <ColumnDefinition Width="110*"/>
+            <ColumnDefinition Width="209*"/>
+            <ColumnDefinition Width="17*"/>
+        </Grid.ColumnDefinitions>
+
+
+        <Label Content="Weather Book" Grid.ColumnSpan="3" Grid.Row="1" FontSize="22" FontWeight="Bold" Margin="28,5,10,39" Grid.RowSpan="2" Grid.Column="1"/>
+        <Label Content="Project Name" HorizontalAlignment="Left" Grid.Row="2" FontSize="15" Width="140" Grid.ColumnSpan="2" Margin="15,0,0,0"/>
+        <Label Content="Project Location" HorizontalAlignment="Left" Grid.Row="3" FontSize="15" Width="148" Grid.ColumnSpan="2" Margin="11,0,0,0"/>
+        <Label Content="Temperature Unit" HorizontalAlignment="Left" Grid.Row="4" FontSize="15" Width="148" Grid.ColumnSpan="2" Margin="11,0,0,0"/>
+
+        <Label Content="Total Av.Temp." HorizontalAlignment="Right" Margin="0,18,208,1" Grid.Row="7" FontSize="18" Width="124" Grid.ColumnSpan="3"/>
+        <TextBox x:Name="TotAveTemp" Grid.Column="2" Grid.Row="7" Text="" TextWrapping="Wrap" Margin="10,18,10,1" Grid.ColumnSpan="2" TextChanged="TotAveTemp_TextChanged"/>
+
+        <TextBox x:Name="PrName" Grid.Column="1" Grid.Row="2" Text="" Grid.ColumnSpan="2" TextWrapping="Wrap" Margin="42,5,26,10" TextChanged="PrName_TextChanged"/>
+        <TextBox x:Name="PrLoc" Grid.Column="1" Grid.Row="3" Text="" Grid.ColumnSpan="2" TextWrapping="Wrap" Margin="42,5,26,10" TextChanged="PrLoc_TextChanged"/>
+        <RadioButton x:Name="Tcil" Content="C" Grid.Column="1" HorizontalAlignment="Left" Margin="40,9,0,0" Grid.Row="4" VerticalAlignment="Top" Height="14" Width="26" Checked="Tcil_Checked"/>
+        <RadioButton x:Name="Tf" Content="F" Grid.Column="2" HorizontalAlignment="Left" Margin="14,9,0,0" Grid.Row="4" VerticalAlignment="Top" Height="14" Width="25" Checked="Tf_Checked"/>
+        <ListBox Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="4" Margin="10,0,10,0">
+            <ListBoxItem >
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Width="426">
+                    <Label Content=" Date" Width="106" Height="33" FontSize="15"/>
+                    <Label Content=" Min.Temp" Width="106" Height="33" FontSize="15"/>
+                    <Label Content=" Max.Temp" Width="106" Height="33" FontSize="15"/>
+                    <Label Content=" Ave.Temp." Width="106" Height="33" FontSize="15"/>
+
+                </StackPanel>
+            </ListBoxItem>
+            <ListBoxItem >
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Width="426">
+                    <TextBox x:Name="Date01" Width="106" Height="33"/>
+                    <TextBox x:Name="mTemp01" Width="106" Height="33" Text="{Binding Path=PropMinTemp1, Mode=TwoWay, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True, UpdateSourceTrigger=PropertyChanged}" TextChanged="mTemp01_TextChanged"/>
+                    <TextBox x:Name="MaxTemp01" Width="106" Height="33" Text="{Binding Path=PropMaxTemp1, Mode=TwoWay, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True, UpdateSourceTrigger=PropertyChanged}" TextChanged="MaxTemp01_TextChanged"/>
+                    <TextBox x:Name="AveTemp01" Width="106" Height="33" Text="{Binding Path= PropAve1, Mode=TwoWay, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True, UpdateSourceTrigger=PropertyChanged}" TextChanged="MaxTemp01_TextChanged"/>
+                </StackPanel>
+            </ListBoxItem>
+            <ListBoxItem >
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Width="426">
+                    <TextBox x:Name="Date02" Width="106" Height="33"/>
+                    <TextBox x:Name="mTemp02" Width="106" Height="33" Text="{Binding Path=PropMinTemp2, Mode=TwoWay, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True, UpdateSourceTrigger=PropertyChanged}" TextChanged="mTemp02_TextChanged"/>
+                    <TextBox x:Name="MaxTemp02" Width="106" Height="33"  Text="{Binding Path=PropMaxTemp2, Mode=TwoWay, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True, UpdateSourceTrigger=PropertyChanged}" TextChanged="MaxTemp02_TextChanged"/>
+                    <TextBox x:Name="AveTemp02" Width="106" Height="33"  Text="{Binding Path= PropAve2, Mode=TwoWay, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True, UpdateSourceTrigger=PropertyChanged}" TextChanged="MaxTemp01_TextChanged"/>
+                </StackPanel>
+            </ListBoxItem>
+
+        </ListBox>
+        <Button x:Name="Butt_Load" Content="Load" HorizontalAlignment="Left" Height="36" Grid.Row="8" VerticalAlignment="Top" Width="84" Margin="10,40,0,0" Click="Button_Click" Grid.Column="2"/>
+        <Button x:Name="Butt_Save" Content="Save" HorizontalAlignment="Left" Height="36" Grid.Column="2" Grid.Row="8" VerticalAlignment="Top" Width="84" Margin="119,40,0,0" Click="Butt_Save_Click"/>
+
+
+    </Grid>
+
+</Window>
